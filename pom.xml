@@ -4,7 +4,7 @@
 	<groupId>com.ireald</groupId>
 	<artifactId>irealdweb-project</artifactId>
 	<version>1.0.0</version>
-	<name>IREALDWeb :: Project</name>
+	<name>IrealdWeb :: Project</name>
 	<packaging>pom</packaging>
 	<description>a j2ee framework by ireald</description>
 	<url>http://www.github.com/timolee/irealdweb</url>
