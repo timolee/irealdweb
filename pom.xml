@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ireald</groupId>
+	<artifactId>irealdweb-project</artifactId>
+	<version>1.0.0</version>
+	<name>IREALDWeb :: Project</name>
+	<packaging>pom</packaging>
+	<description>a j2ee framework by ireald</description>
+	<url>http://www.github.com/timolee/irealdweb</url>
+	<inceptionYear>2004-2014</inceptionYear>
+	<organization>
+		<name>ireald</name>
+		<url>http://www.ireald.com</url>
+	</organization>
+	<developers>
+		<developer>
+			<id>timolee</id>
+			<name>timolee</name>
+			<email>timo.li.icon at gmail.com</email>
+			<organization></organization>
+			<roles>
+				<role>Project leader</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+	<modules>
+		<module>parent</module>
+		<module>core</module>
+		<module>web</module>
+  	</modules>
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/timolee/irealdweb/issues</url>
+    </issueManagement>
+    <scm>
+        <url>https://github.com/springside/springside4</url>
+        <connection>scm:git:git://github.com/timolee/irealdweb.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:timolee/irealdweb.git</developerConnection>
+    </scm>
+</project>
