@@ -7,7 +7,6 @@
 	<version>1.0.0</version>
 	<name>IrealdWeb :: Module :: Parent</name>
 	<packaging>pom</packaging>
-
 	<properties>
 		<!-- 主要依赖库的版本定义 -->
 		<irealdweb.version>1.0.0</irealdweb.version>
