@@ -13,6 +13,7 @@
 		<spring.version>4.0.2.RELEASE</spring.version>
 		<hibernate.version>4.3.4.Final</hibernate.version>
 		<mybatis.version>3.2.5</mybatis.version>
+		<mybatis-spring.version>1.2.2</mybatis-spring.version>
 		<spring-data-jpa.version>1.5.1.RELEASE</spring-data-jpa.version>
 		<tomcat-jdbc.version>7.0.52</tomcat-jdbc.version>
 		<sitemesh.version>2.4.2</sitemesh.version>
@@ -85,15 +86,8 @@
 				<groupId>com.ireald</groupId>
 				<artifactId>irealdweb-core</artifactId>
 				<version>${irealdweb.version}</version>
-				<scope>compile</scope>
 			</dependency>
-			<dependency>
-				<groupId>com.ireald</groupId>
-				<artifactId>irealdweb-web</artifactId>
-				<version>${irealdweb.version}</version>
-				<scope>compile</scope>
-			</dependency>
-			<!-- SPRINGSIDE MODULES end -->
+			<!-- irealdweb MODULES end -->
 			
 			<!-- spring-->
 			<!-- 纯粹为了exclude commons-loging -->
