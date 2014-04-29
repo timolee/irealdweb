@@ -7,9 +7,7 @@
 		<version>1.0.0</version>
 		<relativePath>../parent/</relativePath>
   </parent>
-  <groupId>com.ireald</groupId>
   <artifactId>irealdweb-core</artifactId>
-  <version>1.0.0</version>
   <packaging>jar</packaging>
   <name>IrealdWeb :: Core</name>
   <properties>
