@@ -3,13 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.ireald</groupId>
-		<artifactId>irealdweb-parent</artifactId>
+		<artifactId>ireald-wp-parent</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../parent/</relativePath>
 	</parent>
-	<artifactId>irealdweb-web</artifactId>
+	<artifactId>ireald-wp-web</artifactId>
 	<packaging>war</packaging>
-	<name>IrealdWeb :: Web</name>
+	<name>Ireald::WP :: Web</name>
 	<properties>
 		<!-- 主要依赖库的版本定义 -->
 		<irealdweb.version>1.0.0</irealdweb.version>
@@ -32,7 +32,7 @@
 		<!-- ireald -->
 		<dependency>
 			<groupId>com.ireald</groupId>
-			<artifactId>irealdweb-core</artifactId>
+			<artifactId>ireald-wp-core</artifactId>
 		</dependency>
 		
 		<!-- SPRING basic begin -->
@@ -55,7 +55,10 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 		</dependency>
-		
+        <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        </dependency>
 		<!-- spring aop -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -324,7 +327,9 @@
 					<webAppConfig>
 						<contextPath>/${project.artifactId}</contextPath>
 					</webAppConfig>
-				</configuration>
+                    <stopKey/>
+                    <stopPort/>
+                </configuration>
 			</plugin>
 
 			<!-- tomcat7 插件 -->

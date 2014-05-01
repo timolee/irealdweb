@@ -3,13 +3,13 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
 		<groupId>com.ireald</groupId>
-		<artifactId>irealdweb-parent</artifactId>
+		<artifactId>ireald-wp-parent</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../parent/</relativePath>
   </parent>
-  <artifactId>irealdweb-core</artifactId>
+  <artifactId>ireald-wp-core</artifactId>
   <packaging>jar</packaging>
-  <name>IrealdWeb :: Core</name>
+  <name>Ireald::WP:: Core</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
