@@ -7,7 +7,7 @@
 	</appender>
 
 	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/tmp/logs/quickstart.log</file>
+		<file>/tmp/logs/ireald-wp.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>/tmp/logs/quickstart.%d{yyyy-MM-dd}.log</fileNamePattern>
 		</rollingPolicy>
@@ -17,11 +17,10 @@
 	</appender>
 
 	<!-- project default level -->
-	<logger name="org.springside.examples.quickstart" level="INFO" />
+	<logger name="com.ireald.wp" level="DEBUG" />
 
 	<!--log4jdbc -->
-	<logger name="jdbc.sqltiming" level="INFO"/>
-
+	<logger name="org.apache.ibatis" level="WARN" />  
 	<root level="WARN">
 		<appender-ref ref="console" />
 		<appender-ref ref="rollingFile" />
