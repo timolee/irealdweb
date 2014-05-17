@@ -3,6 +3,7 @@ package com.ireald.core.mybaits.interceptor;
 import java.sql.Connection;
 import java.util.Properties;
 import java.util.regex.Pattern;
+
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.plugin.Interceptor;
@@ -17,7 +18,8 @@ import org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory;
 import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.RowBounds;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.ireald.core.mybaits.dialect.DB2Dialect;
 import com.ireald.core.mybaits.dialect.Dialect;
 import com.ireald.core.mybaits.dialect.Mssql12Dialect;
@@ -28,7 +30,7 @@ import com.ireald.core.mybaits.dialect.OracleDialect;
 @Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class }) })
 public class PaginationInterceptor implements Interceptor {
 	// 日志对象
-	protected static Logger log = Logger.getLogger(PaginationInterceptor.class);
+	private static Logger logger = LoggerFactory.getLogger(PaginationInterceptor.class);
 	private static final ObjectFactory DEFAULT_OBJECT_FACTORY = new DefaultObjectFactory();
 	private static final ObjectWrapperFactory DEFAULT_OBJECT_WRAPPER_FACTORY = new DefaultObjectWrapperFactory();
 	private final static String SQL_SELECT_REGEX = "(?is)^\\s*SELECT.*$";
@@ -101,9 +103,9 @@ public class PaginationInterceptor implements Interceptor {
 						RowBounds.NO_ROW_OFFSET);
 				metaStatementHandler.setValue("delegate.rowBounds.limit",
 						RowBounds.NO_ROW_LIMIT);
-				if (log.isDebugEnabled()) {
+				if (logger.isDebugEnabled()) {
 					BoundSql boundSql = statementHandler.getBoundSql();
-					log.debug("生成分页SQL : " + boundSql.getSql());
+					logger.debug("生成分页SQL : " + boundSql.getSql());
 				}	 	
 			}
 		}
