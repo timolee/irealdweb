@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  *******************************************************************************/
-package com.ireald.core.security.utils;
+package com.ireald.wp.core.security.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,7 +13,7 @@ import java.security.SecureRandom;
 
 import org.apache.commons.lang3.Validate;
 
-import com.ireald.core.utils.Exceptions;
+import com.ireald.wp.core.utils.Exceptions;
 
 
 /**

@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  *******************************************************************************/
-package com.ireald.core.utils;
+package com.ireald.wp.core.utils;
 
 import java.util.Date;
 

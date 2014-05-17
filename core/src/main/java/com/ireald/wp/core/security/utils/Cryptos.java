@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  *******************************************************************************/
-package com.ireald.core.security.utils;
+package com.ireald.wp.core.security.utils;
 
 import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
@@ -16,7 +16,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import com.ireald.core.utils.Exceptions;
+import com.ireald.wp.core.utils.Exceptions;
 
 
 /**
