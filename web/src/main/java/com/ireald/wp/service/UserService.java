@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ireald.core.security.utils.Digests;
-import com.ireald.core.utils.Encodes;
 import com.ireald.wp.core.mybaits.mapper.BaseMapper;
 import com.ireald.wp.core.mybaits.paging.Page;
 import com.ireald.wp.core.mybaits.service.BaseService;
+import com.ireald.wp.core.security.utils.Digests;
+import com.ireald.wp.core.utils.Encodes;
 import com.ireald.wp.domain.User;
 import com.ireald.wp.mapper.UserMapper;
 

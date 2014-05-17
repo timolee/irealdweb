@@ -20,7 +20,7 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ireald.core.utils.Encodes;
+import com.ireald.wp.core.utils.Encodes;
 import com.ireald.wp.domain.Role;
 import com.ireald.wp.domain.User;
 import com.ireald.wp.service.UserService;
