@@ -1,4 +1,4 @@
-package com.ireald.core.mybaits.paging;
+package com.ireald.wp.core.mybaits.paging;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class Page<E> {
     public Page(int pageNum, int pageSize) {
         this.pageNum = pageNum;
         this.pageSize = pageSize;
-        this.startRow = pageNum > 0 ? (pageNum - 1) * pageSize : 0;
+        this.startRow = pageNum > 0 ? ((pageNum - 1) * pageSize+1) : 0;
         this.endRow = pageNum * pageSize;
     }
 
@@ -72,6 +72,9 @@ public class Page<E> {
 
     public void setTotal(long total) {
         this.total = total;
+        if(total!=0&&pageSize>0){
+        	pages=(int) (total%pageSize==0?total/pageSize:(total/pageSize+1));
+        }
     }
 
     @Override

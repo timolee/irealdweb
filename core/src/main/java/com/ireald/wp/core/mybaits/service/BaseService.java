@@ -1,7 +1,8 @@
-package com.ireald.core.mybaits.service;
+package com.ireald.wp.core.mybaits.service;
 
-import com.ireald.core.mybaits.mapper.BaseMapper;
-import com.ireald.core.mybaits.paging.Page;
+import com.ireald.wp.core.mybaits.mapper.BaseMapper;
+import com.ireald.wp.core.mybaits.paging.Page;
+
 
 public abstract class BaseService<T,PK> {
 	

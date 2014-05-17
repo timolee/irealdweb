@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ireald.core.mybaits.mapper.BaseMapper;
-import com.ireald.core.mybaits.paging.Page;
-import com.ireald.core.mybaits.service.BaseService;
+import com.ireald.wp.core.mybaits.mapper.BaseMapper;
+import com.ireald.wp.core.mybaits.paging.Page;
+import com.ireald.wp.core.mybaits.service.BaseService;
 import com.ireald.wp.domain.Role;
 import com.ireald.wp.domain.UserAssoRole;
 import com.ireald.wp.mapper.RoleMapper;
@@ -62,7 +62,7 @@ public class RoleService extends BaseService<Role,String> {
 			UserAssoRole userAssoRole=new UserAssoRole();
 			userAssoRole.setUser_role_id(java.util.UUID.randomUUID().toString().replace("-", ""));
 			userAssoRole.setRole_id(roleId);
-			userAssoRole.setUser_id(roleId);
+			userAssoRole.setUser_id(userId);
 			return userAssoRoleMapper.insert(userAssoRole);
 		}else{
 			return 0;

@@ -37,7 +37,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<!--<filter>
+	<filter>
 		<filter-name>shiroFilter</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 		<init-param>
@@ -48,7 +48,7 @@
 	<filter-mapping>
 		<filter-name>shiroFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>-->
+	</filter-mapping>
 
 	<filter>
 		<filter-name>sitemeshFilter</filter-name>

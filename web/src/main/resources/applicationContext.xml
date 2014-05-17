@@ -13,6 +13,6 @@
 	default-lazy-init="true">
 	<description>Spring入口配置 </description>
     <import resource="classpath*:spring/applicationContext-default.xml" />
-   <!-- <import resource="classpath*:spring/applicationContext-shiro.xml" />-->
+    <import resource="classpath*:spring/applicationContext-shiro.xml" />
     <import resource="classpath*:spring/applicationContext-cache.xml" />
 </beans>

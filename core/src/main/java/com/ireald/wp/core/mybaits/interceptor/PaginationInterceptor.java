@@ -1,4 +1,4 @@
-package com.ireald.core.mybaits.interceptor;
+package com.ireald.wp.core.mybaits.interceptor;
 
 import java.sql.Connection;
 import java.util.Properties;
@@ -20,12 +20,13 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.ireald.core.mybaits.dialect.DB2Dialect;
-import com.ireald.core.mybaits.dialect.Dialect;
-import com.ireald.core.mybaits.dialect.Mssql12Dialect;
-import com.ireald.core.mybaits.dialect.Mssql58Dialect;
-import com.ireald.core.mybaits.dialect.MysqlDialect;
-import com.ireald.core.mybaits.dialect.OracleDialect;
+
+import com.ireald.wp.core.mybaits.dialect.DB2Dialect;
+import com.ireald.wp.core.mybaits.dialect.Dialect;
+import com.ireald.wp.core.mybaits.dialect.Mssql12Dialect;
+import com.ireald.wp.core.mybaits.dialect.Mssql58Dialect;
+import com.ireald.wp.core.mybaits.dialect.MysqlDialect;
+import com.ireald.wp.core.mybaits.dialect.OracleDialect;
 
 @Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class }) })
 public class PaginationInterceptor implements Interceptor {

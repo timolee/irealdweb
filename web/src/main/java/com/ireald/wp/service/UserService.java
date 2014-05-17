@@ -1,15 +1,18 @@
 package com.ireald.wp.service;
 
 import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.ireald.core.mybaits.mapper.BaseMapper;
-import com.ireald.core.mybaits.paging.Page;
-import com.ireald.core.mybaits.service.BaseService;
+
 import com.ireald.core.security.utils.Digests;
 import com.ireald.core.utils.Encodes;
+import com.ireald.wp.core.mybaits.mapper.BaseMapper;
+import com.ireald.wp.core.mybaits.paging.Page;
+import com.ireald.wp.core.mybaits.service.BaseService;
 import com.ireald.wp.domain.User;
 import com.ireald.wp.mapper.UserMapper;
 
@@ -59,24 +62,21 @@ public class UserService extends BaseService<User,String> {
 
 	@Override
 	public Page<User> findByPage(Page<User> page) {
-		// TODO Auto-generated method stub
-		return null;
+		if(page!=null){
+			long total=userMapper.countAll();
+			page.setTotal(total);
+			RowBounds rowBounds=new RowBounds(page.getStartRow(), page.getEndRow());
+			page.setResult(userMapper.countAllbyPage(rowBounds));
+		}
+		return page;
 	}
 	
 	public User findUserByLoginId(String loginId){
-		List<User> lists=userMapper.selectByLoginId(loginId);
-		if(lists!=null&&lists.size()>0){
-			return lists.get(0);
-		}
-       return null;
+		return userMapper.selectByLoginId(loginId);
 	}
 	
 	public User findUserWithRolesByLoginId(String loginId) {
-		List<User> lists=userMapper.selectWithRolesByLoginId(loginId);
-		if(lists!=null&&lists.size()>0){
-			return lists.get(0);
-		}
-       return null;
+		return userMapper.selectWithRolesByLoginId(loginId);
 	}
 	
 	/**

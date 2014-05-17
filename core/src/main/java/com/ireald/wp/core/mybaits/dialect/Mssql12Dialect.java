@@ -1,6 +1,6 @@
-package com.ireald.core.mybaits.dialect;
+package com.ireald.wp.core.mybaits.dialect;
 
-public class OracleDialect extends Dialect
+public class Mssql12Dialect extends Dialect
 {
 
     /*
@@ -12,17 +12,12 @@ public class OracleDialect extends Dialect
     @Override
     public String getLimitString(String sql, int offset, int limit)
     {
-
         sql = sql.trim();
+       
         StringBuffer pagingSelect = new StringBuffer(sql.length() + 100);
 
-        pagingSelect
-                .append("select * from ( select row_.*, rownum rownum_ from ( ");
-
         pagingSelect.append(sql);
-
-        pagingSelect.append(" ) row_ ) where rownum_ > ").append(offset)
-                .append(" and rownum_ <= ").append(offset + limit);
+        pagingSelect.append(" OFFSET " ).append(offset).append(" ROW FETCH NEXT ").append(limit).append(" ROWS ONLY ");
 
         return pagingSelect.toString();
     }

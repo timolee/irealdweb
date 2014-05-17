@@ -1,6 +1,5 @@
 package com.ireald.wp.mapper;
-
-import com.ireald.core.mybaits.mapper.BaseMapper;
+import com.ireald.wp.core.mybaits.mapper.BaseMapper;
 import com.ireald.wp.domain.PermissonAssoResoucre;
 
 public interface PermissonAssoResoucreMapper extends BaseMapper {

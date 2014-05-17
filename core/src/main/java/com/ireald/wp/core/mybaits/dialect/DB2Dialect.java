@@ -1,4 +1,4 @@
-package com.ireald.core.mybaits.dialect;
+package com.ireald.wp.core.mybaits.dialect;
 
 public class DB2Dialect extends Dialect
 {

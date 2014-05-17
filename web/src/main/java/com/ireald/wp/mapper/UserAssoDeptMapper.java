@@ -1,6 +1,6 @@
 package com.ireald.wp.mapper;
 
-import com.ireald.core.mybaits.mapper.BaseMapper;
+import com.ireald.wp.core.mybaits.mapper.BaseMapper;
 import com.ireald.wp.domain.UserAssoDept;
 
 public interface UserAssoDeptMapper extends BaseMapper {

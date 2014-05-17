@@ -2,7 +2,9 @@ package com.ireald.wp.mapper;
 
 import java.util.List;
 
-import com.ireald.core.mybaits.mapper.BaseMapper;
+import org.apache.ibatis.session.RowBounds;
+
+import com.ireald.wp.core.mybaits.mapper.BaseMapper;
 import com.ireald.wp.domain.User;
 
 public interface UserMapper extends BaseMapper {
@@ -54,7 +56,11 @@ public interface UserMapper extends BaseMapper {
      */
     int updateByPrimaryKey(User record);
     
-    List<User> selectByLoginId(String loginId);
+    User selectByLoginId(String loginId);
     
-    List<User> selectWithRolesByLoginId(String loginId);
+    User selectWithRolesByLoginId(String loginId);
+    
+    Long countAll();
+    
+    List<User> countAllbyPage(RowBounds rowBounds);
 }

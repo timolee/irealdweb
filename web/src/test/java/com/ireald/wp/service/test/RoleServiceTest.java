@@ -34,7 +34,7 @@ public class RoleServiceTest {
 	@Test
 	public void testAddRole() {
 		Role role=new Role();
-		role.setRole_id(java.util.UUID.randomUUID().toString().replace("-", ""));
+		role.setRole_id("1");
 		role.setIs_show(true);
 		role.setName("test");
 		role.setRole("test");
@@ -45,7 +45,7 @@ public class RoleServiceTest {
 
 	@Test
 	public void testDeleteByIdString() {
-		fail("Not yet implemented");
+		roleService.deleteById("2");
 	}
 
 	@Test
@@ -56,6 +56,14 @@ public class RoleServiceTest {
 	@Test
 	public void testFindByPagePageOfRole() {
 		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testAssoUserToRole(){
+		String userId="6b3b2349800743c38491457c38e6b8a2";
+		String roleId="df4bc9a6e78c4c18bf346a9954b79c1d";
+		int i=roleService.assoUserToRole(userId, roleId);
+		assertEquals(1, i);
 	}
 
 }

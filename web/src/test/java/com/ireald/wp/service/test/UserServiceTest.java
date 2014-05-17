@@ -15,6 +15,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ireald.wp.core.mybaits.paging.Page;
+import com.ireald.wp.domain.Role;
 import com.ireald.wp.domain.User;
 import com.ireald.wp.enums.StatusType;
 import com.ireald.wp.service.UserService;
@@ -28,8 +30,8 @@ public class UserServiceTest {
 	public void setUp() throws Exception {
 		User user=new User();
 		user.setUser_id(userId);
-		user.setLoginid("timolee");
-		user.setUsername("timolee");
+		user.setLoginid("timoli");
+		user.setUsername("timoli");
 		user.setAdmin(true);
 		user.setCreate_date(new Date());
 		user.setDeleted(false);
@@ -49,15 +51,10 @@ public class UserServiceTest {
 
 	@Test
 	public void testUpdateUser() {
-		//fail("Not yet implemented");
-	}
-
-	@Test
-	public void testAddUser() {
 		User user=new User();
 		user.setUser_id("2");
-		user.setLoginid("timolee");
-		user.setUsername("timolee");
+		user.setLoginid("timoli2");
+		user.setUsername("timoli2");
 		user.setAdmin(true);
 		user.setCreate_date(new Date());
 		user.setDeleted(false);
@@ -69,6 +66,33 @@ public class UserServiceTest {
 		user.setStatus(StatusType.ENABLE);
 		int ret=userService.add(user);
 		assertEquals(1, ret);
+		user=userService.findById("2");
+		user.setUsername("abc");
+		userService.update(user);
+		user=userService.findById("2");
+		assertEquals("abc", user.getUsername());
+		userService.deleteById("2");
+	}
+
+	@Test
+	public void testAddUser() {
+		User user=new User();
+		user.setUser_id("2");
+		user.setLoginid("timoli2");
+		user.setUsername("timoli2");
+		user.setAdmin(true);
+		user.setCreate_date(new Date());
+		user.setDeleted(false);
+		user.setEmail("timo.li.icon@gmail.com");
+		user.setMobile_phone_number("13780215544");
+		user.setPinyin("xxx000");
+		user.setSerialno(1);
+		user.setPlainPassword("123456");
+		user.setStatus(StatusType.ENABLE);
+		int ret=userService.add(user);
+		assertEquals(1, ret);
+		userService.deleteById("2");
+		
 	}
 	
 	@Test
@@ -80,7 +104,14 @@ public class UserServiceTest {
 
 	@Test
 	public void testFindByPagePageOfUser() {
-		//fail("Not yet implemented");
+		Page<User> page=new Page<User>(1, 2);
+		page=userService.findByPage(page);
+		System.out.println("testFindByPagePageOfUser:"+page);
+		if(page.getResult()!=null){
+			for(User u:page.getResult()){
+			System.out.println(ReflectionToStringBuilder.toString(u));
+			}
+		}
 	}
 
 	@Test
@@ -92,8 +123,15 @@ public class UserServiceTest {
 
 	@Test
 	public void testFindUserWithRolesByLoginId() {
-		userService.deleteById("2");
+		User user1=userService.findUserWithRolesByLoginId("admin");
+		System.out.println("testFindUserWithRolesByLoginId:"+ReflectionToStringBuilder.toString(user1));
+		if(user1.getRoles()!=null){
+			System.out.println("findRoles!");
+			for(Role r:user1.getRoles()){
+				System.out.println(ReflectionToStringBuilder.toString(r));
+			}
+		}
+		assertNotNull(user1);
 	}
-	
-
+		
 }

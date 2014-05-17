@@ -21,6 +21,17 @@
     <result column="deleted" jdbcType="BIT" property="deleted" />
     <result column="admin" jdbcType="BIT" property="admin" />
   </resultMap>
+  
+   <resultMap type="com.ireald.wp.domain.User" id="userWithRoleMap" extends="BaseResultMap">  
+        <collection property="roles" ofType="com.ireald.wp.domain.Role">  
+            <id column="role_id" jdbcType="VARCHAR"  property="role_id" />
+		    <result column="role_role" jdbcType="VARCHAR" property="role" />
+		    <result column="role_name" jdbcType="VARCHAR" property="name" />
+		    <result column="role_description" jdbcType="VARCHAR" property="description" />
+		    <result column="role_is_show" jdbcType="BIT" property="is_show" /> 
+        </collection>  
+    </resultMap>  
+    
   <sql id="Base_Column_List">
     <!--
       WARNING - @mbggenerated
@@ -226,6 +237,15 @@
     where user_id = #{user_id,jdbcType=VARCHAR}
   </update>
   
+  <select id="countAll" resultType="java.lang.Long">
+     select count(1) from user
+  </select>
+  
+   <select id="countAllbyPage" resultType="com.ireald.wp.domain.User">
+      select * from user
+   </select>
+  
+  
    <select id="queryByVo" parameterType="com.ireald.wp.domain.User" resultType="com.ireald.wp.domain.User">
      select * from user
      <where>
@@ -239,5 +259,16 @@
     from user
     where loginid = #{loginId,jdbcType=VARCHAR}
     </select>
+    
+    <select id="selectWithRolesByLoginId" parameterType="java.lang.String" resultMap="userWithRoleMap">
+SELECT
+user.user_id,user.loginid,user.username,user.password,user.salt,user.email,user.mobile_phone_number,user.pinyin,user.status,user.serialno,
+user.create_date,user.deleted,user.admin,role.role_id,role.role as role_role,role.name as role_name,role.description as role_description,role.is_show as role_is_show FROM user 
+Left Join user_role ON user.user_id = user_role.user_id
+Left Join role ON user_role.role_id = role.role_id
+where loginid = #{loginId,jdbcType=VARCHAR}
+    </select>
+    
+    
     
 </mapper>
