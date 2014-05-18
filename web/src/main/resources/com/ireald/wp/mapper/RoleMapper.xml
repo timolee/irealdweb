@@ -13,6 +13,15 @@
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="is_show" jdbcType="BIT" property="is_show" />
   </resultMap>
+  <resultMap id="roleWithPermissionResultMap" type="com.ireald.wp.domain.Role"  extends="BaseResultMap">
+   <collection property="premissions" ofType="com.ireald.wp.domain.Premission">  
+		<id column="permisson_id" jdbcType="VARCHAR" property="permisson_id" />
+		<result column="permisson" jdbcType="VARCHAR" property="permisson" />
+		<result column="permisson_name" jdbcType="VARCHAR" property="name" />
+		<result column="permisson_description" jdbcType="VARCHAR" property="description" />
+		<result column="permisson_is_show" jdbcType="BIT" property="is_show" />
+    </collection>  
+  </resultMap>
   <sql id="Base_Column_List">
     <!--
       WARNING - @mbggenerated
@@ -130,4 +139,22 @@
       is_show = #{is_show,jdbcType=BIT}
     where role_id = #{role_id,jdbcType=VARCHAR}
   </update>
+  <select id="selectWithPremissonByPrimaryKey" parameterType="java.lang.String" resultMap="roleWithPermissionResultMap">
+   SELECT
+	role.role_id,
+	role.role,
+	role.name,
+	role.description,
+	role.is_show,
+	premission.permisson,
+	premission.name as permisson_name,
+	premission.description as permisson_description,
+	premission.is_show as permisson_is_show,
+	premission.permisson_id
+	FROM
+	role
+	Left Join role_permisson ON role.role_id = role_permisson.role_id
+	Left Join premission ON role_permisson.permisson_id = premission.permisson_id
+  where role.role_id = #{role_id,jdbcType=VARCHAR}
+  </select>
 </mapper>

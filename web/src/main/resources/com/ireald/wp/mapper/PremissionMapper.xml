@@ -13,6 +13,19 @@
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="is_show" jdbcType="BIT" property="is_show" />
   </resultMap>
+   <resultMap id="withResourceResultMap" type="com.ireald.wp.domain.Premission" extends="BaseResultMap">
+    <collection property="resources" ofType="com.ireald.wp.domain.Resource">  
+    <id column="resource_id" jdbcType="VARCHAR" property="resource_id" />
+    <result column="resource_path" jdbcType="VARCHAR" property="path" />
+    <result column="resource_url" jdbcType="VARCHAR" property="url" />
+    <result column="resource_name" jdbcType="VARCHAR" property="name" />
+    <result column="resource_pid" jdbcType="VARCHAR" property="pid" />
+    <result column="resource_code" jdbcType="VARCHAR" property="code" />
+    <result column="resource_icon" jdbcType="VARCHAR" property="icon" />
+    <result column="resource_type" jdbcType="VARCHAR" property="type" />
+    <result column="resource_serailno" jdbcType="INTEGER" property="serailno" />
+    </collection> 
+   </resultMap>
   <sql id="Base_Column_List">
     <!--
       WARNING - @mbggenerated
@@ -130,4 +143,26 @@
       is_show = #{is_show,jdbcType=BIT}
     where permisson_id = #{permisson_id,jdbcType=VARCHAR}
   </update>
+   <select id="selectWithResourceByPrimaryKey" parameterType="java.lang.String" resultMap="withResourceResultMap">
+    SELECT
+	premission.permisson_id,
+	premission.permisson,
+	premission.name,
+	premission.description,
+	premission.is_show,
+	resource.resource_id,
+	resource.path as resource_path,
+	resource.url as resource_url,
+	resource.name as resource_name,
+	resource.pid as resource_pid,
+	resource.code as resource_code,
+	resource.icon as resource_icon,
+	resource.type as resource_type,
+	resource.serailno as resource_serailno
+	FROM
+	premission
+	Left Join permisson_resoucre ON premission.permisson_id = permisson_resoucre.permisson_id
+	Left Join resource ON permisson_resoucre.resource_id = resource.resource_id
+	where premission.permisson_id = #{permisson_id,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ireald.wp.domain.Premission;
 import com.ireald.wp.domain.Role;
 import com.ireald.wp.service.RoleService;
 
@@ -33,14 +35,14 @@ public class RoleServiceTest {
 
 	@Test
 	public void testAddRole() {
-		Role role=new Role();
+		/*Role role=new Role();
 		role.setRole_id("1");
 		role.setIs_show(true);
 		role.setName("test");
 		role.setRole("test");
 		role.setDescription("test");
 		int i=roleService.add(role);
-		assertEquals(1, i);
+		assertEquals(1, i);*/
 	}
 
 	@Test
@@ -60,10 +62,19 @@ public class RoleServiceTest {
 	
 	@Test
 	public void testAssoUserToRole(){
-		String userId="6b3b2349800743c38491457c38e6b8a2";
+		/*String userId="6b3b2349800743c38491457c38e6b8a2";
 		String roleId="df4bc9a6e78c4c18bf346a9954b79c1d";
 		int i=roleService.assoUserToRole(userId, roleId);
-		assertEquals(1, i);
+		assertEquals(1, i);*/
+	}
+	@Test
+	public void testFindWithPremissionById(){
+		String roleId="13e2ceae9a794796b681e0c804033ae3";
+		Role role=roleService.findWithPremissionById(roleId);
+		assertNotNull(role);
+		for(Premission p:role.getPremissions()){
+			System.out.println(ReflectionToStringBuilder.toString(p));
+		}
 	}
 
 }

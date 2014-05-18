@@ -7,7 +7,7 @@
 		<property name="dialect" value="mysql"></property>
 	</properties>
 	<plugins>
-		<plugin interceptor="com.ireald.core.mybaits.interceptor.PaginationInterceptor">
+		<plugin interceptor="com.ireald.wp.core.mybaits.interceptor.PaginationInterceptor">
 		</plugin>
 	</plugins>
 </configuration>

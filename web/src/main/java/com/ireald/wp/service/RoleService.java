@@ -50,6 +50,10 @@ public class RoleService extends BaseService<Role,String> {
 		// TODO Auto-generated method stub
 		return roleMapper.selectByPrimaryKey(id);
 	}
+	
+	public Role findWithPremissionById(String id){
+		return roleMapper.selectWithPremissonByPrimaryKey(id);
+	}
 
 	@Override
 	public Page<Role> findByPage(Page<Role> page) {
@@ -68,5 +72,7 @@ public class RoleService extends BaseService<Role,String> {
 			return 0;
 		}
 	}
+	
+  
 
 }

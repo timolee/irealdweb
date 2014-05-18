@@ -51,4 +51,6 @@ public interface UserAssoRoleMapper extends BaseMapper {
      * @mbggenerated Sat May 17 15:14:35 CST 2014
      */
     int updateByPrimaryKey(UserAssoRole record);
+    
+    
 }
