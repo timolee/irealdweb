@@ -17,6 +17,15 @@
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="serailno" jdbcType="INTEGER" property="serailno" />
   </resultMap>
+  <resultMap id="withPremissionResultMap" type="com.ireald.wp.domain.Resource" extends="BaseResultMap">
+   <collection property="premissions" ofType="com.ireald.wp.domain.Premission">  
+		<id column="permisson_id" jdbcType="VARCHAR" property="permisson_id" />
+		<result column="permisson" jdbcType="VARCHAR" property="permisson" />
+		<result column="permisson_name" jdbcType="VARCHAR" property="name" />
+		<result column="permisson_description" jdbcType="VARCHAR" property="description" />
+		<result column="permisson_is_show" jdbcType="BIT" property="is_show" />
+    </collection> 
+  </resultMap>
   <sql id="Base_Column_List">
     <!--
       WARNING - @mbggenerated
@@ -176,4 +185,45 @@
       serailno = #{serailno,jdbcType=INTEGER}
     where resource_id = #{resource_id,jdbcType=VARCHAR}
   </update>
+  <select id="selectByRoleId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    resource.resource_id,
+	resource.path,
+	resource.url,
+	resource.name,
+	resource.pid,
+	resource.code,
+	resource.icon,
+	resource.type,
+	resource.serailno
+    FROM
+	resource
+	Left Join permisson_resoucre ON resource.resource_id = permisson_resoucre.resource_id
+	Left Join premission ON permisson_resoucre.permisson_id = premission.permisson_id
+	Left Join role_permisson ON premission.permisson_id = role_permisson.permisson_id
+	Inner Join role ON role_permisson.role_id = role.role_id
+    where role.role_id = #{role_id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectWithPremissionByPrimaryKey" parameterType="java.lang.String" resultMap="withPremissionResultMap">
+ 	SELECT
+	resource.resource_id,
+	resource.path,
+	resource.url,
+	resource.name,
+	resource.pid,
+	resource.code,
+	resource.icon,
+	resource.`type`,
+	resource.serailno,
+	premission.permisson_id,
+	premission.permisson,
+	premission.name as permisson_name ,
+	premission.description as permisson_description,
+	premission.is_show as permisson_is_show
+	FROM
+	resource
+	Left Join permisson_resoucre ON resource.resource_id = permisson_resoucre.resource_id
+	Left Join premission ON permisson_resoucre.permisson_id = premission.permisson_id
+    where resource.resource_id = #{resource_id,jdbcType=VARCHAR}
+  </select>
 </mapper>

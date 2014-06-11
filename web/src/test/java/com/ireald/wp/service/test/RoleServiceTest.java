@@ -76,5 +76,14 @@ public class RoleServiceTest {
 			System.out.println(ReflectionToStringBuilder.toString(p));
 		}
 	}
+	@Test
+	public void testFindWithResourceById(){
+		String roleId="13e2ceae9a794796b681e0c804033ae3";
+		Role role=roleService.findWithResourceById(roleId);
+		assertNotNull(role);
+		for(com.ireald.wp.domain.Resource r:role.getResources()){
+			System.out.println("res:"+ReflectionToStringBuilder.toString(r));
+		}
+	}
 
 }

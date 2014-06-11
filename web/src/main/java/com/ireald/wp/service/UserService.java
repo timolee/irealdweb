@@ -79,6 +79,10 @@ public class UserService extends BaseService<User,String> {
 		return userMapper.selectWithRolesByLoginId(loginId);
 	}
 	
+	public User findUserWithDeptsByLoginId(String loginId){
+		return userMapper.selectWithDeptsByLoginId(loginId);
+	}
+	
 	/**
 	 * 设定安全的密码，生成随机的salt并经过1024次 sha-1 hash
 	 */

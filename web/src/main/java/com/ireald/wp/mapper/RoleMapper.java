@@ -52,7 +52,9 @@ public interface RoleMapper extends BaseMapper {
      */
     int updateByPrimaryKey(Role record);
     
-    public Role selectWithPremissonByPrimaryKey(String role_id);
+    Role selectWithPremissonByPrimaryKey(String role_id);
+    
+    Role selectWithResourceByPrimaryKey(String role_id);
     
     
 }

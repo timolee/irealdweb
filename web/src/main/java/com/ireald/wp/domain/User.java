@@ -108,7 +108,17 @@ public class User {
      */
     private Boolean admin;
     
-    private List<Role> roles;
+    private List<Dept> depts;
+    
+    public List<Dept> getDepts() {
+		return depts;
+	}
+
+	public void setDepts(List<Dept> depts) {
+		this.depts = depts;
+	}
+
+	private List<Role> roles;
 
     public List<Role> getRoles() {
 		return roles;

@@ -1,11 +1,7 @@
 package com.ireald.wp.shiro;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.PostConstruct;
-
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -17,12 +13,10 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import com.ireald.wp.core.utils.Encodes;
-import com.ireald.wp.domain.Role;
 import com.ireald.wp.domain.User;
+import com.ireald.wp.service.AuthService;
 import com.ireald.wp.service.UserService;
 
 /**
@@ -32,6 +26,16 @@ import com.ireald.wp.service.UserService;
 public class ShiroDbRealm extends AuthorizingRealm {
 
 	protected UserService userService;
+	
+	protected AuthService authService;
+
+	public AuthService getAuthService() {
+		return authService;
+	}
+
+	public void setAuthService(AuthService authService) {
+		this.authService = authService;
+	}
 
 	public UserService getUserService() {
 		return userService;
@@ -47,15 +51,8 @@ public class ShiroDbRealm extends AuthorizingRealm {
 		ShiroUser shiroUser = (ShiroUser) principalCollection
 				.getPrimaryPrincipal();
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-		User user = userService.findUserWithRolesByLoginId(shiroUser
-				.getLoginId());
-		if (user.getRoles() != null && user.getRoles().size() > 0) {
-			List<String> roles = new ArrayList<String>();
-			for (Role r : user.getRoles()) {
-				roles.add(r.getRole());
-			}
-			info.addRoles(roles);
-		}
+		info.addRoles(authService.findStringRolesByLoginId(shiroUser.getLoginId()));
+		info.addStringPermissions(authService.findStringPremissionByLoginId(shiroUser.getLoginId()));
 		return info;
 	}
 

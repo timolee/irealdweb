@@ -30,6 +30,18 @@
 		    <result column="role_description" jdbcType="VARCHAR" property="description" />
 		    <result column="role_is_show" jdbcType="BIT" property="is_show" /> 
         </collection>  
+    </resultMap>
+    
+     <resultMap type="com.ireald.wp.domain.User" id="userWithDeptMap" extends="BaseResultMap">  
+        <collection property="depts" ofType="com.ireald.wp.domain.Dept">  
+            <id column="dept_id" jdbcType="VARCHAR" property="dept_id" />
+		    <result column="dept_pid" jdbcType="VARCHAR" property="pid" />
+		    <result column="dept_fullname" jdbcType="VARCHAR" property="fullname" />
+		    <result column="dept_code" jdbcType="VARCHAR" property="code" />
+		    <result column="dept_serailno" jdbcType="INTEGER" property="serailno" />
+		    <result column="dept_pinyin" jdbcType="VARCHAR" property="pinyin" />
+		    <result column="dept_name" jdbcType="VARCHAR" property="name" />
+        </collection>  
     </resultMap>  
     
   <sql id="Base_Column_List">
@@ -269,6 +281,32 @@ Left Join role ON user_role.role_id = role.role_id
 where loginid = #{loginId,jdbcType=VARCHAR}
     </select>
     
-    
+    <select id="selectWithDeptsByLoginId" parameterType="java.lang.String" resultMap="userWithDeptMap">
+	SELECT
+	user.user_id,
+	user.loginid,
+	user.username,
+	user.password,
+	user.salt,
+	user.email,
+	user.mobile_phone_number,
+	user.pinyin,
+	user.status,
+	user.serialno,
+	user.create_date,
+	user.deleted,
+	user.admin,
+	dept.dept_id,
+	dept.pid as dept_pid,
+	dept.name as dept_name,
+	dept.fullname as dept_fullname,
+	dept.code as dept_code,
+	dept.serailno as dept_serailno,
+	dept.pinyin as dept_pinyin
+	FROM user
+	Left Join user_dept ON user.user_id = user_dept.user_id
+	Left Join dept ON user_dept.dept_id = dept.dept_id
+	where user.loginid = #{loginId,jdbcType=VARCHAR}
+    </select>
     
 </mapper>

@@ -16,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ireald.wp.core.mybaits.paging.Page;
+import com.ireald.wp.domain.Dept;
 import com.ireald.wp.domain.Role;
 import com.ireald.wp.domain.User;
 import com.ireald.wp.enums.StatusType;
@@ -132,6 +133,17 @@ public class UserServiceTest {
 			}
 		}
 		assertNotNull(user1);
+	}
+	
+	@Test
+	public void testFindUserWithDeptsByLoginId(){
+		User user1=userService.findUserWithDeptsByLoginId("timolee");
+		System.out.println("testFindUserWithDeptsByLoginId:"+ReflectionToStringBuilder.toString(user1));
+		if(user1.getDepts()!=null){
+		   for(Dept d:user1.getDepts()){
+			   System.out.println(ReflectionToStringBuilder.toString(d));
+		   }
+		}
 	}
 		
 }

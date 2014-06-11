@@ -34,50 +34,50 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
         <!-- 基础表 -->
-		<table schema="" tableName="user" domainObjectName="User" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
+		<!-- <table schema="" tableName="user" domainObjectName="User" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
-			<property name="rootInterface" value="com.ireald.core.mybaits.mapper.BaseMapper" />
-		</table>
-        <table schema="" tableName="dept" domainObjectName="Dept" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
+			<property name="rootInterface" value="com.ireald.wp.core.mybaits.mapper.BaseMapper" />
+		</table> -->
+     <!--    <table schema="" tableName="dept" domainObjectName="Dept" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
-			<property name="rootInterface" value="com.ireald.core.mybaits.mapper.BaseMapper" />
-		</table>
-		<table schema="" tableName="role" domainObjectName="Role" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
+			<property name="rootInterface" value="com.ireald.wp.core.mybaits.mapper.BaseMapper" />
+		</table> -->
+		<!--  <table schema="" tableName="role" domainObjectName="Role" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
-			<property name="rootInterface" value="com.ireald.core.mybaits.mapper.BaseMapper" />
+			<property name="rootInterface" value="com.ireald.wp.core.mybaits.mapper.BaseMapper" />
 		</table>
 		<table schema="" tableName="premission" domainObjectName="Premission" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
-			<property name="rootInterface" value="com.ireald.core.mybaits.mapper.BaseMapper" />
+			<property name="rootInterface" value="com.ireald.wp.core.mybaits.mapper.BaseMapper" />
 		</table>
 		<table schema="" tableName="resource" domainObjectName="Resource" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
-			<property name="rootInterface" value="com.ireald.core.mybaits.mapper.BaseMapper" />
+			<property name="rootInterface" value="com.ireald.wp.core.mybaits.mapper.BaseMapper" />
 		</table>
 		<table schema="" tableName="resource" domainObjectName="Resource" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
-			<property name="rootInterface" value="com.ireald.core.mybaits.mapper.BaseMapper" />
+			<property name="rootInterface" value="com.ireald.wp.core.mybaits.mapper.BaseMapper" />
 		</table>
-		<!-- 基础关系表 -->
+		基础关系表
 		<table schema="" tableName="user_dept" domainObjectName="UserAssoDept" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
-			<property name="rootInterface" value="com.ireald.core.mybaits.mapper.BaseMapper" />
+			<property name="rootInterface" value="com.ireald.wp.core.mybaits.mapper.BaseMapper" />
 		</table>
 		<table schema="" tableName="user_role" domainObjectName="UserAssoRole" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
-			<property name="rootInterface" value="com.ireald.core.mybaits.mapper.BaseMapper" />
-		</table>
+			<property name="rootInterface" value="com.ireald.wp.core.mybaits.mapper.BaseMapper" />
+		</table> -->
 		<table schema="" tableName="dept_role" domainObjectName="DeptAssoRole" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
-			<property name="rootInterface" value="com.ireald.core.mybaits.mapper.BaseMapper" />
+			<property name="rootInterface" value="com.ireald.wp.core.mybaits.mapper.BaseMapper" />
 		</table>
-		<table schema="" tableName="role_permisson" domainObjectName="RoleAssoPermisson" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
+		 <!-- <table schema="" tableName="role_permisson" domainObjectName="RoleAssoPermisson" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
-			<property name="rootInterface" value="com.ireald.core.mybaits.mapper.BaseMapper" />
+			<property name="rootInterface" value="com.ireald.wp.core.mybaits.mapper.BaseMapper" />
 		</table>
 		<table schema="" tableName="permisson_resoucre" domainObjectName="PermissonAssoResoucre" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false">
 			<property name="useActualColumnNames" value="true" />
-			<property name="rootInterface" value="com.ireald.core.mybaits.mapper.BaseMapper" />
-		</table>
+			<property name="rootInterface" value="com.ireald.wp.core.mybaits.mapper.BaseMapper" />
+		</table> -->
 	</context>
 </generatorConfiguration>

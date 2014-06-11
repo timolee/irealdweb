@@ -1,5 +1,7 @@
 package com.ireald.wp.mapper;
 
+import java.util.List;
+
 import com.ireald.wp.core.mybaits.mapper.BaseMapper;
 import com.ireald.wp.domain.Resource;
 
@@ -51,4 +53,8 @@ public interface ResourceMapper extends BaseMapper {
      * @mbggenerated Sat May 17 15:14:35 CST 2014
      */
     int updateByPrimaryKey(Resource record);
+    
+    List<Resource> selectByRoleId(String role_id);
+    
+    Resource selectWithPremissionByPrimaryKey(String resource_id);
 }

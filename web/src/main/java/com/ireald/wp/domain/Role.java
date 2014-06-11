@@ -44,6 +44,7 @@ public class Role {
     private Boolean is_show;
     
     private List<Premission> premissions;
+    
 
     public List<Premission> getPremissions() {
 		return premissions;
@@ -51,6 +52,16 @@ public class Role {
 
 	public void setPremissions(List<Premission> premissions) {
 		this.premissions = premissions;
+	}
+	
+	private List<Resource> resources;
+
+	public List<Resource> getResources() {
+		return resources;
+	}
+
+	public void setResources(List<Resource> resources) {
+		this.resources = resources;
 	}
 
 	/**

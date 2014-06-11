@@ -16,9 +16,10 @@
 		<property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml"/>
 	</bean>
 	
-	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
+	<!-- 項目自定义的Realm, 所有authService依赖的service都需要用depends-on声明 -->
 	<bean id="shiroDbRealm" class="com.ireald.wp.shiro.ShiroDbRealm">
 		<property name="userService" ref="userService"/>
+		<property name="authService" ref="authService"/>
 	</bean>
 	
 	<!-- Shiro Filter -->

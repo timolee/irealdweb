@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ireald.wp.core.mybaits.mapper.BaseMapper;
 import com.ireald.wp.core.mybaits.paging.Page;
 import com.ireald.wp.core.mybaits.service.BaseService;
+import com.ireald.wp.core.utils.Identities;
 import com.ireald.wp.domain.Role;
 import com.ireald.wp.domain.UserAssoRole;
 import com.ireald.wp.mapper.RoleMapper;
@@ -54,6 +55,10 @@ public class RoleService extends BaseService<Role,String> {
 	public Role findWithPremissionById(String id){
 		return roleMapper.selectWithPremissonByPrimaryKey(id);
 	}
+	
+	public Role findWithResourceById(String id){
+		return roleMapper.selectWithResourceByPrimaryKey(id);
+	}
 
 	@Override
 	public Page<Role> findByPage(Page<Role> page) {
@@ -64,7 +69,7 @@ public class RoleService extends BaseService<Role,String> {
 	public int assoUserToRole(String userId,String roleId){
 		if(StringUtils.isNoneBlank(userId)&&StringUtils.isNoneBlank(roleId)){
 			UserAssoRole userAssoRole=new UserAssoRole();
-			userAssoRole.setUser_role_id(java.util.UUID.randomUUID().toString().replace("-", ""));
+			userAssoRole.setUser_role_id(Identities.uuid2());
 			userAssoRole.setRole_id(roleId);
 			userAssoRole.setUser_id(userId);
 			return userAssoRoleMapper.insert(userAssoRole);

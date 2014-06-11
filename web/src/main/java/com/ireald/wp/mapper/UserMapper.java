@@ -60,6 +60,8 @@ public interface UserMapper extends BaseMapper {
     
     User selectWithRolesByLoginId(String loginId);
     
+    User selectWithDeptsByLoginId(String loginId);
+    
     Long countAll();
     
     List<User> countAllbyPage(RowBounds rowBounds);

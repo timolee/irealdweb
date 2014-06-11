@@ -2,6 +2,9 @@ package com.ireald.wp.service.test;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ireald.wp.domain.Premission;
 import com.ireald.wp.domain.Resource;
 import com.ireald.wp.service.ResourceService;
 @RunWith(value = SpringJUnit4ClassRunner.class) 
@@ -63,5 +67,25 @@ public class ResourceServiceTest {
 		int i=resourceService.assoPremissionToResource(premissionId, resourceId);
 		assertEquals(1, i);*/
 	}
+	
+	@Test
+	public void testFindByRoleId(){
+	   String roleId="13e2ceae9a794796b681e0c804033ae3";
+	   List<Resource> ress=resourceService.findByRoleId(roleId);
+	   for(Resource res:ress){
+		   System.out.println("res:"+ReflectionToStringBuilder.toString(res));
+	   }
+	}
 
+	@Test
+	public void testFindWtihPermissionById(){
+		String resourceId="1f2875053ad249d9ad77f3588a562f3c";
+		Resource res=resourceService.findWtihPermissionById(resourceId);
+		assertNotNull(res);
+		if(res!=null){
+			for(Premission p:res.getPremissions()){
+				System.out.println("p:"+ReflectionToStringBuilder.toString(p));
+			}
+		}
+	}
 }
